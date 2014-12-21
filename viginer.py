@@ -39,6 +39,3 @@ if __name__ == '__main__':
         arguments.output.write(result)
         print('Viginer decoding has successfully done!')
     
-        
-    
-    
