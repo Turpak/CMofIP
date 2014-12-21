@@ -1,4 +1,5 @@
 CMofIP
 ======
+Лабораторный работы по КМЗИ:
 
-cryptographic methods of information protection
+Лабораторная работа №1 - шифр Виженера: viginer.py
