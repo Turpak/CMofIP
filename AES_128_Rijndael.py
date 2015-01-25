@@ -232,7 +232,46 @@ def decoding(indata, key):
 
     return outdata
 
-        
+def encrypt (filein, arguments):
+     final_result = []
+     data = []
+     for byte in filein:
+         data.append(byte)
+         if len(data) == 16:
+             block = coding(data, arguments.key.read())
+             final_result.extend(block)
+             del data[:]
+     else:
+         if 0 < len(data) < 16:
+             free_pos = 16 - len(data)
+             for i in range(free_pos - 1):
+                 data.append(0)
+             data.append(1)
+             block = coding(data, arguments.key.read())
+             final_result.extend(block)
+     arguments.output.write(bytes(final_result))
+     
+     print('AES coding has successfully done!')
+
+def decrypt (filein, arguments):
+    final_result = []
+    data = []
+    for byte in filein:
+        data.append(byte)
+        if len(data) == 16:
+            block = decoding(data, arguments.key.read())
+            final_result.extend(block)
+            del data[:]
+    else:
+        if 0 < len(data) < 16:
+            free_pos = 16 - len(data)
+            for i in range(free_pos - 1):
+                data.append(0)
+            data.append(1)
+            block = decoding(data, arguments.key.read())
+            final_result.extend(block)
+    arguments.output.write(bytes(final_result))
+    print('AES decoding has successfully done!')
 
 if __name__ == '__main__':
     parser = create_Parser()
@@ -287,48 +326,6 @@ if __name__ == '__main__':
 
         
     if arguments.cod == code:
-        filein = arguments.input.read()
-        final_result = []
-        data = []
-        for byte in filein:
-            data.append(byte)
-            if len(data) == 16:
-                block = coding(data, arguments.key.read())
-                final_result.extend(block)
-                del data[:]
-        else:
-            if 0 < len(data) < 16:
-                free_pos = 16 - len(data)
-                for i in range(free_pos - 1):
-                    data.append(0)
-                data.append(1)
-                block = coding(data, arguments.key.read())
-                final_result.extend(block)
-        arguments.output.write(bytes(final_result))
-        
-        print('AES coding has successfully done!')
+        encrypt(arguments.input.read(), arguments)
     else:
-        filein = arguments.input.read()
-        final_result = []
-        data = []
-        for byte in filein:
-            data.append(byte)
-            if len(data) == 16:
-                block = decoding(data, arguments.key.read())
-                final_result.extend(block)
-                del data[:]
-        else:
-            if 0 < len(data) < 16:
-                free_pos = 16 - len(data)
-                for i in range(free_pos - 1):
-                    data.append(0)
-                data.append(1)
-                block = decoding(data, arguments.key.read())
-                final_result.extend(block)
-        arguments.output.write(bytes(final_result))
-
-        print('AES decoding has successfully done!')
-    
-        
-    
-    
+        decrypt(arguments.input.read(), arguments)
