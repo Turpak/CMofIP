@@ -2,10 +2,10 @@ import myELGAMAL
 import bigNum
 
 def testELGAMAL ():
-    with open('encrypted_data.txt', 'rb') as file:
+    with open('encr_data.txt', 'rb') as file:
         aa = file.readline()
         bb = file.readline()
-    with open('private_key.txt', 'rb') as f:
+    with open('priv_key.txt', 'rb') as f:
         xx = f.readline()
         pp = f.readline()
                 
