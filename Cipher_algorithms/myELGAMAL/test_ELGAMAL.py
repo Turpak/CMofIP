@@ -1,24 +1,18 @@
+import random
+import pytest
 import myELGAMAL
 import bigNum
+import simple_test
 
 def testELGAMAL ():
-    with open('C:\ELGAMAL\encrypted_data.txt', 'rb') as file:
-        aa = file.readline()
-        bb = file.readline()
-    with open('C:\ELGAMAL\private_key.txt', 'rb') as f:
-        xx = f.readline()
-        pp = f.readline()
-                
-    a = bigNum.bigNum(aa[:len(aa)-1])
-    b = bigNum.bigNum(bb)
-    x = bigNum.bigNum(xx[:len(xx)-1])
-    p = bigNum.bigNum(pp)
+    p = simple_test.simple_gen(64)
+    g = simple_test.simple_gen_do(p)
+    x = bigNum.random_big(p)
+    y = bigNum.to_pow(g, x, p)
 
-    M = myELGAMAL.decrypt(a,b,x,p)
-    
-    with open('C:\ELGAMAL\data.txt', 'rb') as filename:
-        tmp = filename.read()
+    M = bigNum.random_big(p-1)
 
-    data = bigNum.bigNum(tmp[3:])
+    a, b = myELGAMAL.encrypt(M,p,g,y)
+    data = myELGAMAL.decrypt(a,b,x,p)
 
     assert M == data
