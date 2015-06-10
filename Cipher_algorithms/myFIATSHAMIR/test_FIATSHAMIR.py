@@ -2,7 +2,7 @@ import myFIATSHAMIR
 import bigNum
 
 def test_truePASSWORD ():
-    Xfile = 'C:\FIATSHAMIR\secret.txt'
+    Xfile = 'secret.txt'
     n, v = myFIATSHAMIR.pre_stage(Xfile)
 
     with open(Xfile, 'rb') as file:
@@ -13,7 +13,7 @@ def test_truePASSWORD ():
     assert True == myFIATSHAMIR.check(n, v, secret)
 
 def test_wrongPASSWORD ():
-    secret = 'C:\FIATSHAMIR\secret.txt'
+    secret = 'secret.txt'
     n, v = myFIATSHAMIR.pre_stage(secret)
 
     wrong_secret = bigNum.random_big(n-1)
