@@ -42,8 +42,8 @@ def keygen():
     
     while gcd != 1:
         while d < 2:
-            p = simple_test.simple_gen(100)
-            q = simple_test.simple_gen(100)
+            p = simple_test.simple_gen(50)
+            q = simple_test.simple_gen(50)
             fi = (p-1) * (q-1)
             gcd, x, d = ext_euclid(fi,e)
     
