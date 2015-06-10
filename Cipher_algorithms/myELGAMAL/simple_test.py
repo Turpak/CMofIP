@@ -34,7 +34,7 @@ def miller_test(m):#m - bigNum
         t /= 2
         s += 1
     
-    for rnd in range(50):
+    for rnd in range(20):
         a = bigNum.random_big(m - 4) + 2
         if not step(a, t, m, s):
             return False
