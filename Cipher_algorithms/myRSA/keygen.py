@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import bigNum
+import BigInt
 import simple_test
 import argparse
 import sys
@@ -17,10 +17,10 @@ def ext_euclid(a, b):#calculates ax+by = gcd(a,b), return gcd,x,y
     if a == 0:
         return b, 1, 0
 
-    x2 = bigNum.bigNum(1)
-    x1 = bigNum.bigNum(0)
-    y2 = bigNum.bigNum(0)
-    y1 = bigNum.bigNum(1)
+    x2 = BigInt.BigInt(1)
+    x1 = BigInt.BigInt(0)
+    y2 = BigInt.BigInt(0)
+    y1 = BigInt.BigInt(1)
 
     while b > 0:
         q = a / b
@@ -37,8 +37,8 @@ def ext_euclid(a, b):#calculates ax+by = gcd(a,b), return gcd,x,y
     return a, x2, y2
 
 def keygen():
-    e = bigNum.bigNum(65537)
-    gcd, d = bigNum.bigNum(0), bigNum.bigNum(0)
+    e = BigInt.BigInt(65537)
+    gcd, d = BigInt.BigInt(0), BigInt.BigInt(0)
     
     while gcd != 1:
         while d < 2:
@@ -48,7 +48,7 @@ def keygen():
             gcd, x, d = ext_euclid(fi,e)
     
     print"p and q generated"
-    n = bigNum.bigNum(1)
+    n = BigInt.BigInt(1)
     n = p * q
     
     return e, d, n
