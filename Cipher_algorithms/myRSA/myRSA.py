@@ -18,12 +18,12 @@ def encrypt(m,e,n):
     if m >= n:
         raise ValueError('Please, remember that m < n! :)')
         
-    c = BigInt.powmod(m,e,n)
+    c = n.powmod(m,e,n)
 
     return c
 
 def decrypt(c,d,n):
-    m = BigInt.powmod(c,d,n)
+    m = n.powmod(c,d,n)
 
     return m
 
