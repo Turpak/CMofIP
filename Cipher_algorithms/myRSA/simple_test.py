@@ -1,17 +1,17 @@
 #!/usr/bin/env python
-import bigNum
+import BigInt
 import argparse
 import sys
 
-bigNum.go_generate()
+BigInt.initRandom()
 
 def step(a, t, m, s):
-    x = bigNum.to_pow(a, t, m)
+    x = BigInt.powmod(a, t, m)
     
     if x == 1 or x == m - 1:
         return True
 
-    i = bigNum.bigNum(0)
+    i = BigInt.BigInt(0)
     while i < s - 1:
         x = (x * x) % m
         if x == m - 1:
@@ -28,21 +28,21 @@ def miller_test(m):#m - bigNum
         return False
 
     t = m - 1
-    s = bigNum.bigNum(0)
+    s = BigInt.BigInt(0)
 
     while t % 2 == 0:
         t /= 2
         s += 1
     
     for rnd in range(20):
-        a = bigNum.random_big(m - 4) + 2
+        a = BigInt.random_big(m - 4) + 2
         if not step(a, t, m, s):
             return False
 
     return True
 
 def simple_gen(len):
-    gen_res = bigNum.random_fixlen(len)
+    gen_res = BigInt.random_fixlen(len)
 
     if gen_res % 2 == 0:
         gen_res += 1
