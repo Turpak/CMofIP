@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import bigNum
+import BigInt
 import simple_test
 import argparse
 import sys
@@ -18,12 +18,12 @@ def encrypt(m,e,n):
     if m >= n:
         raise ValueError('Please, remember that m < n! :)')
         
-    c = bigNum.to_pow(m,e,n)
+    c = BigInt.powmod(m,e,n)
 
     return c
 
 def decrypt(c,d,n):
-    m = bigNum.to_pow(c,d,n)
+    m = BigInt.powmod(c,d,n)
 
     return m
 
@@ -36,9 +36,9 @@ def main():
         ee = args.public.readline() 
         nn = args.public.readline()
     
-        m = bigNum.bigNum(msg[3:])
-        e = bigNum.bigNum(ee[:len(ee)-1])
-        n = bigNum.bigNum(nn)
+        m = BigInt.BigInt(msg[3:])
+        e = BigInt.BigInt(ee[:len(ee)-1])
+        n = BigInt.BigInt(nn)
 
         c = encrypt(m,e,n)
 
@@ -54,9 +54,9 @@ def main():
         dd = args.private.readline() 
         nn = args.private.readline()
 
-        c = bigNum.bigNum(msg)
-        d = bigNum.bigNum(dd[:len(dd)-1])
-        n = bigNum.bigNum(nn)
+        c = BigInt.BigInt(msg)
+        d = BigInt.BigInt(dd[:len(dd)-1])
+        n = BigInt.BigInt(nn)
 
         m = decrypt(c,d,n)
 
