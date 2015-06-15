@@ -34,7 +34,7 @@ public:
 	BigInt operator /(const BigInt& B) const;
 	BigInt operator %(const BigInt& B) const;
 	BigInt operator ^(const BigInt& B) const;
-  BigInt powmod(BigInt& a, BigInt& k, BigInt& n);	
+  	BigInt powmod(BigInt& a, BigInt& k, BigInt& n);	
 	BigInt operator +=(const BigInt& B); 	   
 	BigInt operator -=(const BigInt& B);	   
 	BigInt operator *=(const BigInt& B);	   
