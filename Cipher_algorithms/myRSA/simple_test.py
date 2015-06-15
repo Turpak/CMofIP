@@ -6,7 +6,7 @@ import sys
 BigInt.initRandom()
 
 def step(a, t, m, s):
-    x = BigInt.powmod(a, t, m)
+    x = m.powmod(a, t, m)
     
     if x == 1 or x == m - 1:
         return True
