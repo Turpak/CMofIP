@@ -80,8 +80,8 @@ private:
 	void ShiftRight();	
 
 	friend int cmp(BigInt A, BigInt B);
-        friend BigInt GenerateRandomLen(int bitLen);
-        friend BigInt GenerateRandomMax(BigInt max);
+        friend BigInt random_fixlen(int bitLen);
+        friend BigInt random_big(BigInt max);
 };
 BigInt random_fixlen(int bitLen);
 BigInt random_big(BigInt max);	
